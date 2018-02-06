@@ -1,11 +1,18 @@
 /****** Main Styling ******/
+@import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo');
 
+html{ height: 100%; }
 body {
-	font-family: 'Roboto', sans-serif;
-	font-size: 16px;
-	color: #222;
-	background-color: #ECF0F1;
-	text-align: center;
+	font-family: 'Nanum Myeongjo', serif;
+	font-size: 18px;
+  font-weight: bold;
+  height: 100%;
+	color: black;
+	background-image: url("https://raw.githubusercontent.com/altairstudios/nodeserver/master/nodeserver-logo.png"), linear-gradient(to right, lightgreen , white);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: 400px, contain;
+/* 	text-align: center; */
 }
 
 .container {
@@ -14,7 +21,13 @@ body {
 }
 
 .footer {
-	margin-top: 60px;
+	position: absolute;
+  width: 100%;
+  height: auto;
+/*   border: solid; */
+  bottom: 20px;
+  text-align: center;
+
 }
 
 ol {
@@ -28,8 +41,3 @@ a {
 	color: #2574A9;
 }
 /****** Logo Div Styling ******/
-
-img {
-	margin: 20px auto 0 auto;
-	display: block;
-}

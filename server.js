@@ -38,6 +38,37 @@ app.route('/')
 		  res.sendFile(process.cwd() + '/views/index.html');
     })
 
+
+// -------------------------------- My Code ------------------------------------------
+// app.set('trust proxy', true);  //Necessary trust the proxy provider else we will get only the localhost ip address
+
+app.route('/api/whoami/').get(function(req, res) {
+  var object = {
+    "ipaddress":"",
+    "language":"",
+    "software":""
+  };
+  
+//   Extract information from the header
+  var clientIP = req.headers["x-forwarded-for"].split(",")[0];
+  var clientOS = req.headers["user-agent"];
+  var from = clientOS.indexOf("(")+1, to = clientOS.indexOf(")");
+  var clientLang = req.headers["accept-language"].split(",")[0];
+  
+//   inject data into object
+  object.ipaddress = clientIP;
+  object.software = clientOS.slice(from, to);
+  object.language = clientLang;
+
+//   Reply the JSON
+  res.status(200);
+  res.send(object);
+});
+
+
+// -------------------------------- My Code ------------------------------------------
+
+
 // Respond not found to all the wrong routes
 app.use(function(req, res, next){
   res.status(404);
@@ -56,4 +87,6 @@ app.use(function(err, req, res, next) {
 app.listen(process.env.PORT, function () {
   console.log('Node.js listening ...');
 });
+
+
 
